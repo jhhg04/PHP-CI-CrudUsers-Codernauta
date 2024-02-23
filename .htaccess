@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  # Permite el acceso desde cualquier dirección IP
+  RewriteCond %{REMOTE_ADDR} !^$
+
+  # Las siguientes reglas redirigen todas las solicitudes a index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
